@@ -7,7 +7,7 @@ appointments with the doctor.
 It also has a covid statistics check area, emergency phone call, maps with direction to the hospital.
 
 [NOTE]
-The app is still under completion, I will stil like to finish the notifications, covid api call and also write some tests.
+The app is still under completion, I will still like to finish the notifications, covid api call and also write some tests.
 
 ## Getting Started
 
