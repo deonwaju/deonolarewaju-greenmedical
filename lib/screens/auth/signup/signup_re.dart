@@ -94,6 +94,12 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                       return new AlphaInputField(
                         onChanged: bloc.nameChanged,
                         onSaved: (val) => _name = val,
+                        validator: (_phone) {
+                          if(_phone.isEmpty){
+                            return 'Please enter your full name';
+                          }
+                          return null;
+                        },
 
                       );
                     }
@@ -108,6 +114,12 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                         errorText: snapshot.error,
                         onChanged: bloc.phoneChanged,
                         onSaved: (val) => _phone = val,
+                        validator: (_phone) {
+                          if(_phone.isEmpty){
+                            return 'Please enter your phone number';
+                          }
+                          return null;
+                        },
 
                       );
                     }
@@ -122,6 +134,12 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                         errorText: snapshot.error,
                         onChanged: bloc.passwordChanged,
                         onSaved: (val) => _password = val,
+                        validator: (_phone) {
+                          if(_phone.isEmpty){
+                            return 'Please enter a password';
+                          }
+                          return null;
+                        },
                       );
                     }
                   ),
@@ -166,5 +184,6 @@ class _RegistrationPageState  extends State<RegistrationPage> {
         Navigator.of(context).pushNamed("/login");
       });
     }
+
   }
 }

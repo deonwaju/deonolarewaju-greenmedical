@@ -26,6 +26,7 @@ dependencies:
   url_launcher: ^5.5.0
   redux: ^4.0.0+3
   redux_persist: ^0.8.4
+  connectivity: ^0.4.8
 
   graphql_flutter: ^3.1.0
   graphql: ^3.1.0

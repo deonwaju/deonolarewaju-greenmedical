@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:deon_greenmed/main.dart';
 import 'package:deon_greenmed/notification/actions/actions.dart';
 import 'package:deon_greenmed/notification/builder/reminder_customitem.dart';
 import 'package:deon_greenmed/notification/builder/reminder_item.dart';
@@ -7,10 +8,8 @@ import 'package:deon_greenmed/notification/models/reminder.dart';
 import 'package:deon_greenmed/notification/store/store.dart';
 import 'package:deon_greenmed/notification/utils/notification_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import '../book_appointment.dart';
 
 const String playMusic = 'Play music';
 const String lookAfterPlants = 'Look after plants';

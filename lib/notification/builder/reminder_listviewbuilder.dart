@@ -1,9 +1,9 @@
 
+
+import 'package:deon_greenmed/main.dart';
 import 'package:deon_greenmed/notification/builder/reminder_alertbuilder.dart';
 import 'package:deon_greenmed/notification/models/reminder.dart';
 import 'package:flutter/material.dart';
-
-import '../book_appointment.dart';
 
 class RemindersList extends StatelessWidget {
   final List<Reminder> reminders;

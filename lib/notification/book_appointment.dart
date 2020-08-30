@@ -15,24 +15,24 @@ import 'builder/reminder_listviewbuilder.dart';
 import 'models/reminder.dart';
 
 
-final df = new DateFormat('dd-MM-yyyy hh:mm a');
-
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-NotificationAppLaunchDetails notificationAppLaunchDetails;
-Store<AppState> store;
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initStore();
-  store = getStore();
-  notificationAppLaunchDetails =
-      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-  await initNotifications(flutterLocalNotificationsPlugin);
-  requestIOSPermissions(flutterLocalNotificationsPlugin);
-
-  return(LaunchingApp(store));
-}
+//final df = new DateFormat('dd-MM-yyyy hh:mm a');
+//
+//final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//    FlutterLocalNotificationsPlugin();
+//NotificationAppLaunchDetails notificationAppLaunchDetails;
+//Store<AppState> store;
+//
+//Future<void> main() async {
+//  WidgetsFlutterBinding.ensureInitialized();
+//  await initStore();
+//  store = getStore();
+//  notificationAppLaunchDetails =
+//      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+//  await initNotifications(flutterLocalNotificationsPlugin);
+//  requestIOSPermissions(flutterLocalNotificationsPlugin);
+//
+//  return(LaunchingApp(store));
+//}
 
 class LaunchingApp extends StatelessWidget {
   final Store<AppState> store;
@@ -97,6 +97,5 @@ class LaunchingApp extends StatelessWidget {
       store: store,
     );
 
-    ;
   }
 }

@@ -141,7 +141,9 @@ class MyStatelessWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              MaterialPageRoute(builder: (context) => BarneyStinson());
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+              );
 
 
             },
@@ -182,7 +184,9 @@ class MyStatelessWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              MaterialPageRoute(builder: (context) => BarneyStinson());
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+              );
 
             },
             child: Container(
@@ -222,9 +226,8 @@ class MyStatelessWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => BarneyStinson()),
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
               );
 
             },
@@ -265,7 +268,9 @@ class MyStatelessWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              MaterialPageRoute(builder: (context) => BarneyStinson());
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+              );
 
 
             },
@@ -306,7 +311,9 @@ class MyStatelessWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: GestureDetector(
             onTap: () {
-              MaterialPageRoute(builder: (context) => BarneyStinson());
+              Navigator.of(context, rootNavigator: true).push(
+                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+              );
 
 
             },

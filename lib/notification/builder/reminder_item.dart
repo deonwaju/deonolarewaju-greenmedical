@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:deon_greenmed/notification/builder/reminder_alertbuilder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 
 class ReminderItem extends StatelessWidget {

@@ -214,7 +214,12 @@ class BarneyStinson extends StatelessWidget {
                         height: 5,
                       ),
                       Text(
-                        'Dr. Barney is the top most Gynecologist at Green\nMedical. He has treated over 200 women \nwithin past 3 years. He has achieved several\nawards for his wonderful contribution in his own\nfield. He is available for private consultation for\ngiven schedules.',
+                        'Dr. Barney is the top most Gynecologist at Green\n'
+                            'Medical. He has treated over 200 women \n'
+                            'within past 3 years. He has achieved several\n'
+                            'awards for his wonderful contribution in his own\n'
+                            'field. He is available for private consultation for\n'
+                            'given schedules.',
                         style: TextStyle(
                           height: 1.6,
                           fontWeight: FontWeight.bold,
@@ -234,7 +239,12 @@ class BarneyStinson extends StatelessWidget {
                         child: new Text("Book an appointment",style: TextStyle(
                             color: Colors.white,
                             fontSize: 18
-                        ),),
+                          ),
+                        ),
+                        onPressed:  () {
+                          Navigator.of(context).pushNamed("/bookappointment");
+
+                        },
                         color: Colors.green,
                       ),
                   ),

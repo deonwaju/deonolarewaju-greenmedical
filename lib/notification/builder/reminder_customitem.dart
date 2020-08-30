@@ -1,7 +1,8 @@
 
+
+
 import 'package:deon_greenmed/notification/builder/reminder_alertbuilder.dart';
 import 'package:flutter/material.dart';
-
 
 class ReminderCustomItem extends StatelessWidget {
   final bool checkBoxValue;

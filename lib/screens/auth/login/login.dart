@@ -1,10 +1,11 @@
-import 'file:///C:/FlutterVS/deon_greenmed/lib/comps/login_presenterme.dart';
-import 'file:///C:/FlutterVS/deon_greenmed/lib/widgets/password_field.dart';
-import 'file:///C:/FlutterVS/deon_greenmed/lib/widgets/rounded_text.dart';
 import 'package:deon_greenmed/bloc/login_bloc.dart';
 import 'package:deon_greenmed/models/user.dart';
+import 'package:deon_greenmed/widgets/password_field.dart';
+import 'package:deon_greenmed/widgets/rounded_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'login_presenter.dart';
 
 class LoginPage extends StatefulWidget {
   @override

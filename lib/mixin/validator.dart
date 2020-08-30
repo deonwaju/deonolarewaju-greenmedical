@@ -7,7 +7,7 @@ mixin Validators{
         if(phone.contains(new RegExp(r'^-?[0-9]+$'))){
           sink.add(phone);
         }else{
-          sink.addError("Phone number is not valid");
+          sink.addError("Phone number is not valid.");
         }
       }
   );
