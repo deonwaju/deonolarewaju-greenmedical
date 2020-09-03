@@ -1,8 +1,10 @@
+import 'package:deon_greenmed/constants.dart';
 import 'package:deon_greenmed/database/database_helper.dart';
 import 'package:deon_greenmed/models/user.dart';
 import 'file:///C:/FlutterVS/deon_greenmed/lib/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeBody extends StatefulWidget {
@@ -26,6 +28,7 @@ class _HomeBodyState extends State<HomeBody> {
       throw 'could not open url';
     }
   }
+
 
   void _launchCaller(int number) async {
     var url = "tel: ${number.toString()}";
@@ -55,7 +58,7 @@ class _HomeBodyState extends State<HomeBody> {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    "Welcome, deon",
+                    "Welcome",
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -76,11 +79,12 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
-                      color: Colors.green,
+                      highlightColor: Colors.teal,
+                      color: Colors.grey[300],
+
                       onPressed: () {
 
                         Navigator.of(context).pushNamed("/selectDoc");
-
 
                       },
 
@@ -114,11 +118,20 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
+                      highlightColor: Colors.teal,
                       onPressed: () {
                         setState(() {
-
+                          _showDialogue();
+//                          Fluttertoast.showToast(
+//                              msg: "Coming Soon",
+//                              toastLength: Toast.LENGTH_LONG,
+//                              gravity: ToastGravity.CENTER,
+//                              timeInSecForIosWeb: 2,
+//                              backgroundColor: Colors.red,
+//                              textColor: Colors.white,
+//                              fontSize: 16.0
+//                          );
                         });
-
                       },
                       color: Colors.grey[300],
 
@@ -151,6 +164,7 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
+                      highlightColor: Colors.teal,
                       onPressed: () {
                         setState(() {
                           _launchUrl("https://www.google.com/maps/place/Adeyemo+Alakija+St,+Ikeja+GRA,+Lagos/@6.5785962,3.3501541,17z/data=!3m1!4b1!4m5!3m4!1s0x103b920e2a8cfa0f:0x4f4ade203850afa5!8m2!3d6.5785962!4d3.3523428");
@@ -189,6 +203,7 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
+                      highlightColor: Colors.teal,
                       onPressed: () {
                         setState(() {
 
@@ -226,9 +241,10 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
+                      highlightColor: Colors.teal,
                       onPressed: () {
                         setState(() {
-                          _launchCaller(2347034811040);
+                          _launchCaller(emergencyPhoneNo);
 
                         });
 
@@ -265,11 +281,10 @@ class _HomeBodyState extends State<HomeBody> {
                     height: 90,
                     width: 350,
                     child: RaisedButton(
+                      highlightColor: Colors.teal,
                       onPressed: () {
-                        setState(() {
-
-
-                        });
+                        Navigator.of(context)
+                            .pop(); // Dismiss alert dialog
 
                       },
                       color: Colors.deepOrange[200],
@@ -323,6 +338,28 @@ class _HomeBodyState extends State<HomeBody> {
         _isLoading = false;
       });
     }
+  }
+
+  void _showDialogue() {
+    showDialog<void>(
+      context: context,
+      // false = user must tap button, true = tap outside dialog
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: Text('Coming Soon'),
+          content: Text('We are working on this feature at the moment, please bear with us.'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Continue'),
+              onPressed: () {
+                Navigator.of(dialogContext)
+                    .pop(); // Dismiss alert dialog
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
 }

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+
+const int emergencyPhoneNo = 2347034811040;
+
+
 const kPrimaryColor = Color(0xFF6F35A5);
 const kPrimaryLightColor = Color(0xFFF1E6FF);
 const tiffanyBlue = Color(0xff558b2f);
