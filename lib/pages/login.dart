@@ -5,7 +5,7 @@ import 'package:deon_greenmed/widgets/rounded_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'login_presenter.dart';
+import '../screens/auth/login/login_presenter.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -73,13 +73,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         )
     );
 
-    var registerBtn = new RaisedButton(
-      padding: const EdgeInsets.all(10.0),
-      onPressed: _register,
 
-      child: new Text("Register"),
-      color: Colors.teal,
-    );
     var loginForm = new SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

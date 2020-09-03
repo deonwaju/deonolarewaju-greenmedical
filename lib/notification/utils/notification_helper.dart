@@ -66,6 +66,10 @@ Future<void> scheduleNotification(
     'Reminder notifications',
     'Remember about it',
     icon: 'app_icon',
+    priority: Priority.High,
+    importance: Importance.High,
+    enableLights: true,
+
   );
   var iOSPlatformChannelSpecifics = IOSNotificationDetails();
   var platformChannelSpecifics = NotificationDetails(

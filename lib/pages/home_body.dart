@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class WelcomeScreen extends StatefulWidget {
+class HomeBody extends StatefulWidget {
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _HomeBodyState createState() => _HomeBodyState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _HomeBodyState extends State<HomeBody> {
   BuildContext _ctx;
   bool _isLoading = false;
   final formKey = new GlobalKey<FormState>();
@@ -310,7 +310,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     ));
   }
 
-  void _submit(){
+  void _getName(){
     final form = formKey.currentState;
 
     if (form.validate()) {
@@ -319,9 +319,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         form.save();
         var user = new User(_name, _username, _password, null);
         var db = new DatabaseHelper();
-        db.saveUser(user);
+        db.selectUser(user);
         _isLoading = false;
-        Navigator.of(context).pushNamed("/login");
       });
     }
   }

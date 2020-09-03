@@ -1,4 +1,4 @@
-import 'package:deon_greenmed/screens/auth/signup/signup_re.dart';
+import 'file:///C:/FlutterVS/deon_greenmed/lib/pages/signup.dart';
 import 'package:flutter/material.dart';
 
 

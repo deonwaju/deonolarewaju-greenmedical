@@ -20,12 +20,13 @@ class ReminderItem extends StatelessWidget {
         child: CheckboxListTile(
             value: checkBoxValue,
             onChanged: onChanged,
+            activeColor: Colors.teal,
             title: Row(children: <Widget>[
               Row(
                 children: <Widget>[
                   Icon(
                     remindersIcons[iconName],
-                    color: Colors.blue,
+                    color: Colors.teal,
                     size: 30.0,
                   ),
                   Padding(

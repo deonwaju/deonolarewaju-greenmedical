@@ -6,7 +6,7 @@
 //
 // ![Custom list item b](https://flutter.github.io/assets-for-api-docs/assets/widgets/custom_list_item_b.png)
 
-import 'file:///C:/FlutterVS/deon_greenmed/lib/screens/home/welcome/doctors/doctor_details/barney_stinson.dart';
+import 'package:deon_greenmed/screens/doctors/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -142,7 +142,7 @@ class MyStatelessWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+                  MaterialPageRoute(builder: (context) => DoctorDetailsScreen(),)
               );
 
 
@@ -185,7 +185,7 @@ class MyStatelessWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+                  MaterialPageRoute(builder: (context) => DoctorDetailsScreen(),)
               );
 
             },
@@ -227,7 +227,7 @@ class MyStatelessWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+                  MaterialPageRoute(builder: (context) => DoctorDetailsScreen(),)
               );
 
             },
@@ -269,7 +269,7 @@ class MyStatelessWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+                  MaterialPageRoute(builder: (context) => DoctorDetailsScreen(),)
               );
 
 
@@ -312,7 +312,7 @@ class MyStatelessWidget extends StatelessWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                  MaterialPageRoute(builder: (context) => BarneyStinson(),)
+                  MaterialPageRoute(builder: (context) => DoctorDetailsScreen(),)
               );
 
 

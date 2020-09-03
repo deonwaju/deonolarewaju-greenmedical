@@ -1,13 +1,12 @@
-import 'file:///C:/FlutterVS/deon_greenmed/lib/screens/home/welcome/doctors/doctor_details/barney_stinson.dart';
 import 'package:deon_greenmed/notification/book_appointment.dart';
 import 'package:deon_greenmed/notification/store/appstate.dart';
 import 'package:deon_greenmed/notification/store/store.dart';
 import 'package:deon_greenmed/notification/utils/notification_helper.dart';
-import 'package:deon_greenmed/screens/auth/login/login.dart';
+import 'file:///C:/FlutterVS/deon_greenmed/lib/pages/login.dart';
 import 'package:deon_greenmed/screens/auth/login/login_screen.dart';
 import 'package:deon_greenmed/screens/auth/signup/signup_screen.dart';
-import 'file:///C:/FlutterVS/deon_greenmed/lib/screens/auth/signup/signup_re.dart';
-import 'file:///C:/FlutterVS/deon_greenmed/lib/screens/home/welcome/welcome_screen.dart';
+import 'package:deon_greenmed/screens/doctors/doctor_details_screen.dart';
+import 'package:deon_greenmed/screens/home/home_screen.dart';
 import 'package:deon_greenmed/tab/choose_doctor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -35,11 +34,11 @@ Future<void> main() async {
 }
 
 final routes = {
-  '/login': (BuildContext context) => new LoginPage(),
-  '/home': (BuildContext context) => new WelcomeScreen(),
+  '/login': (BuildContext context) => new LoginScreen(),
+  '/home': (BuildContext context) => new HomeScreen(),
   '/register': (BuildContext context) => new SignUpScreen(),
-  '/docProfile': (BuildContext context) => new BarneyStinson(),
-  '/selectDoc': (BuildContext context) => new Homer(),
+  '/docProfile': (BuildContext context) => new DoctorDetailsScreen(),
+  '/selectDoc': (BuildContext context) => new SelectDoctor(),
   '/bookappointment': (BuildContext context) => new LaunchingApp(store),
   '/': (BuildContext context) => new LoginScreen(),
 };
@@ -47,7 +46,7 @@ final routes = {
 
 class MyApp extends StatelessWidget with PreferredSizeWidget{
   // This widget is the root of your application.
-//  Store<AppState> store;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,6 +56,7 @@ class MyApp extends StatelessWidget with PreferredSizeWidget{
       ),
 
       routes: routes,
+
     );
   }
   @override

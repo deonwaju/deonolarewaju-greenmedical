@@ -19,12 +19,13 @@ class ReminderCustomItem extends StatelessWidget {
         child: CheckboxListTile(
             value: checkBoxValue,
             onChanged: onChanged,
+            activeColor: Colors.teal,
             title: Row(children: <Widget>[
               Row(
                 children: <Widget>[
                   Icon(
                     remindersIcons[iconName],
-                    color: Colors.blue,
+                    color: Colors.teal,
                     size: 30.0,
                   ),
                   Column(
@@ -41,9 +42,12 @@ class ReminderCustomItem extends StatelessWidget {
                           )),
                       SizedBox(
                         child: Padding(
-                            padding: new EdgeInsets.only(top: 10, bottom: 10),
+                            padding: new EdgeInsets.only(top: 0, bottom: 10),
                             child: RaisedButton(
-                              color: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)
+                              ),
+                              color: Colors.teal,
                               child: Text(
                                 'SET TIME',
                                 style: TextStyle(

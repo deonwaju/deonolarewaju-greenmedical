@@ -42,17 +42,14 @@ class LaunchingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
       child: MaterialApp(
-          title: 'REMINDERS',
           home: Scaffold(
-            appBar: AppBar(
-              title: Text('Reminders App'),
-            ),
             body: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Row(
+                  SizedBox(height: 80,),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Padding(
@@ -75,20 +72,20 @@ class LaunchingApp extends StatelessWidget {
                       child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.blue,
+                              color: Colors.teal,
                               width: 2,
                             ),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
+                            BorderRadius.all(Radius.circular(15.0)),
                           ),
                           child: SizedBox(
                             child: StoreConnector<AppState, List<Reminder>>(
                                 converter: (store) =>
-                                    store.state.remindersState.reminders,
+                                store.state.remindersState.reminders,
                                 builder: (context, reminders) {
                                   return RemindersList(reminders: reminders);
                                 }),
-                            height: Platform.isAndroid ? 420 : 550,
+                            height: Platform.isAndroid ? 320 : 400,
                           ))),
                 ],
               ),

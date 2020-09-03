@@ -31,8 +31,8 @@ class _NotificationSwitchBuilderState extends State<NotificationSwitchBuilder> {
                   isSwitched = value;
                 });
               },
-              activeTrackColor: Colors.lightBlueAccent,
-              activeColor: Colors.blueAccent,
+              activeTrackColor: Colors.tealAccent,
+              activeColor: Colors.teal,
             ),
             Text(
               'CANCEL ALL',

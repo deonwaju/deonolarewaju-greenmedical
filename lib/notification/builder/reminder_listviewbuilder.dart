@@ -23,7 +23,7 @@ class RemindersList extends StatelessWidget {
                 children: <Widget>[
                   Icon(
                     remindersIcons[item.name],
-                    color: Colors.black,
+                    color: Colors.teal,
                     size: 30.0,
                   ),
                   Text(item.name)
