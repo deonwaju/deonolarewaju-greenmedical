@@ -19,14 +19,14 @@ class CovidHome2 extends StatelessWidget {
                 children: <Widget>[
                   const YMargin(60),
                   Text(
-                    'Covid-19',
+                    'Covid-19 Tracker',
                     style: GoogleFonts.cabin(
                         textStyle:
                         TextStyle(fontSize: 21, color: Color(0xff989CAC))),
                   ),
                   const YMargin(4),
                   Text(
-                    'Tracker',
+                    'Nigeria',
                     style: GoogleFonts.cabin(
                       textStyle: TextStyle(
                           fontSize: 27,
