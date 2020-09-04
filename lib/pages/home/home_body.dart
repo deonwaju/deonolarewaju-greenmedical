@@ -122,15 +122,7 @@ class _HomeBodyState extends State<HomeBody> {
                       onPressed: () {
                         setState(() {
                           _showDialogue();
-//                          Fluttertoast.showToast(
-//                              msg: "Coming Soon",
-//                              toastLength: Toast.LENGTH_LONG,
-//                              gravity: ToastGravity.CENTER,
-//                              timeInSecForIosWeb: 2,
-//                              backgroundColor: Colors.red,
-//                              textColor: Colors.white,
-//                              fontSize: 16.0
-//                          );
+//
                         });
                       },
                       color: Colors.grey[300],
@@ -177,7 +169,7 @@ class _HomeBodyState extends State<HomeBody> {
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.fromLTRB(24.0, 26.0, 24.0, 24.0 ),
-                            child: SvgPicture.asset('assets/svg/direction.svg'),
+                            child: SvgPicture.asset('assets/svg/compasss.svg'),
                           ),
                           Text(
                             'Directions',
@@ -205,9 +197,8 @@ class _HomeBodyState extends State<HomeBody> {
                     child: RaisedButton(
                       highlightColor: Colors.teal,
                       onPressed: () {
-                        setState(() {
 
-                        });
+                          Navigator.of(context).pushNamed("/covidScreen");
 
                       },
                       color: Colors.grey[300],
@@ -336,6 +327,8 @@ class _HomeBodyState extends State<HomeBody> {
         var db = new DatabaseHelper();
         db.selectUser(user);
         _isLoading = false;
+
+        return;
       });
     }
   }
@@ -346,11 +339,18 @@ class _HomeBodyState extends State<HomeBody> {
       // false = user must tap button, true = tap outside dialog
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text('Coming Soon'),
+          title: Text('Coming Soon',
+            style: TextStyle(
+            color: Colors.teal,
+          ),),
           content: Text('We are working on this feature at the moment, please bear with us.'),
           actions: <Widget>[
             FlatButton(
-              child: Text('Continue'),
+              child: Text('Continue',
+                  style:
+              TextStyle(
+                color: Colors.teal,
+              )),
               onPressed: () {
                 Navigator.of(dialogContext)
                     .pop(); // Dismiss alert dialog

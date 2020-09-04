@@ -1,5 +1,5 @@
 
-import 'file:///C:/FlutterVS/deon_greenmed/lib/pages/home_body.dart';
+import 'package:deon_greenmed/pages/home/home_body.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {

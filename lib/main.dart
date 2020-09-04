@@ -2,9 +2,9 @@ import 'package:deon_greenmed/notification/book_appointment.dart';
 import 'package:deon_greenmed/notification/store/appstate.dart';
 import 'package:deon_greenmed/notification/store/store.dart';
 import 'package:deon_greenmed/notification/utils/notification_helper.dart';
-import 'file:///C:/FlutterVS/deon_greenmed/lib/pages/login.dart';
 import 'package:deon_greenmed/screens/auth/login/login_screen.dart';
 import 'package:deon_greenmed/screens/auth/signup/signup_screen.dart';
+import 'package:deon_greenmed/screens/covid/covidScreen.dart';
 import 'package:deon_greenmed/screens/doctors/doctor_details_screen.dart';
 import 'package:deon_greenmed/screens/home/home_screen.dart';
 import 'package:deon_greenmed/tab/choose_doctor.dart';
@@ -39,6 +39,7 @@ final routes = {
   '/register': (BuildContext context) => new SignUpScreen(),
   '/docProfile': (BuildContext context) => new DoctorDetailsScreen(),
   '/selectDoc': (BuildContext context) => new SelectDoctor(),
+  '/covidScreen': (BuildContext context) => new CovidHome2(),
   '/bookappointment': (BuildContext context) => new LaunchingApp(store),
   '/': (BuildContext context) => new LoginScreen(),
 };

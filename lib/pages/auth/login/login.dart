@@ -5,7 +5,21 @@ import 'package:deon_greenmed/widgets/rounded_text.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/auth/login/login_presenter.dart';
+import '../../../screens/auth/login/login_presenter.dart';
+
+
+class PhoneFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Please enter your phone number' : null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Please enter your password' : null;
+  }
+}
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -52,7 +66,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
 
     _ctx = context;
     var loginBtn = new ButtonTheme(
@@ -122,6 +135,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                       stream: bloc.phone,
                       builder: (context, snapshot) =>
                       new NumberInputField(
+                        validator: PhoneFieldValidator.validate,
+
 
                         onSaved: (val) => _phone = val,
                         onChanged: bloc.phoneChanged,
@@ -137,6 +152,8 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                         onChanged: bloc.passwordChanged,
                         onSaved: (val) => _password = val,
                         errorText: snapshot.error,
+                        validator: PasswordFieldValidator.validate,
+
 
                       ),
                     ),

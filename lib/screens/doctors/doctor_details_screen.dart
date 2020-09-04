@@ -1,4 +1,5 @@
-import 'file:///C:/FlutterVS/deon_greenmed/lib/pages/doctor_details.dart';
+
+import 'package:deon_greenmed/pages/doctor/doctor_details.dart';
 import 'package:flutter/material.dart';
 
 class DoctorDetailsScreen extends StatelessWidget {

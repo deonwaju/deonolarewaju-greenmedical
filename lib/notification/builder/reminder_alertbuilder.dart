@@ -10,12 +10,14 @@ import 'package:deon_greenmed/notification/utils/notification_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-const String hourly = 'Trigger every hour';
+const String TenMins = 'Trigger 10 minutes Early';
 const String custom = "You have a doctor's appointment";
 
 const remindersIcons = {
-  hourly: Icons.notifications_none,
+  TenMins: Icons.notifications_none,
   custom:  Icons.notifications_none,
 };
 
@@ -29,7 +31,7 @@ class ReminderAlertBuilder extends StatefulWidget {
 }
 
 class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
-  bool hourlyReminder = false;
+  bool tenMinutesReminder = false;
   bool customReminder = false;
   double margin = Platform.isIOS ? 20 : 5;
 
@@ -51,13 +53,14 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)
               ),
-              child: new Text("Manage Appointments",style: TextStyle(
+              child: new Text("Manage Appointments",
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 18
               ),
               ),
               onPressed: _showMaterialDialog,
-              color: Colors.green,
+              color: Colors.teal,
             ),
           ),
         ],
@@ -99,12 +102,12 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
                             ReminderItem(
                               onChanged: (value) {
                                 setState(() {
-                                  hourlyReminder = value;
+                                  tenMinutesReminder = value;
                                 });
-                                _configure5minWalk(value);
+                                _configure10minEarly(value);
                               },
-                              checkBoxValue: hourlyReminder,
-                              iconName: hourly,
+                              checkBoxValue: tenMinutesReminder,
+                              iconName: TenMins,
                             ),
 
                             SizedBox(height: 50,),
@@ -144,6 +147,7 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
+                                    _showDialogue();
                                   },
                                   child: Text(
                                     "SAVE",
@@ -160,6 +164,7 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
+                                    _toastMessage();
                                   },
                                   child: Text(
                                     "Cancel",
@@ -179,8 +184,8 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
 
     list.forEach((item) {
       switch (item.name) {
-        case hourly:
-          hourlyReminder = true;
+        case TenMins:
+          tenMinutesReminder = true;
           break;
         case custom:
           customReminder = true;
@@ -192,21 +197,7 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
   }
 
 
-  void _configure5minWalk(bool value) {
-    if (value) {
-      getStore().dispatch(SetReminderAction(
-          time: new DateTime.now().toIso8601String(),
-          name: hourly,
-          repeat: RepeatInterval.Hourly));
-      scheduleNotificationPeriodically(
-          flutterLocalNotificationsPlugin, '2', hourly, RepeatInterval.Hourly);
-    } else {
-      getStore().dispatch(RemoveReminderAction(hourly));
-      turnOffNotificationById(flutterLocalNotificationsPlugin, 2);
-    }
-  }
-
-  void _configureCustomReminder(bool value) {
+  void _configure10minEarly(bool value) {
     if (customNotificationTime != null && customNotificationDate != null) {
       if (value) {
 
@@ -227,10 +218,45 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
     }
   }
 
+  void _configureCustomReminder(bool value) {
+    if (customNotificationTime != null && customNotificationDate != null) {
+      if (value) {
+
+        var notificationTime = new DateTime(customNotificationDate.year, customNotificationDate.month, customNotificationDate.day,
+            customNotificationTime.hour, (customNotificationTime.minute - 1));
+
+        getStore().dispatch(SetReminderAction(
+            time: notificationTime.toIso8601String(),
+            name: custom,
+            repeat: RepeatInterval.Daily));
+
+        scheduleNotification(
+            flutterLocalNotificationsPlugin, '4', custom, notificationTime);
+      } else {
+        getStore().dispatch(RemoveReminderAction(custom));
+        turnOffNotificationById(flutterLocalNotificationsPlugin, 4);
+      }
+    }
+  }
+
 
   _showTimeDialog(StateSetter setState) async {
 
     DateTime selectedDate = await showDatePicker(
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.teal,
+            accentColor: Colors.teal,
+            colorScheme: ColorScheme.light(primary: Colors.teal),
+            buttonTheme: ButtonThemeData(
+                textTheme: ButtonTextTheme.primary
+            ),
+          ),
+          child: child,
+
+        );
+      },
       initialDate: DateTime.now(),
       firstDate: DateTime(2010),
       lastDate: DateTime(2100),
@@ -239,6 +265,20 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
 
     TimeOfDay selectedTime = await showTimePicker(
       initialTime: TimeOfDay.now(),
+      builder: (BuildContext context, Widget child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.teal,
+            accentColor: Colors.teal,
+            colorScheme: ColorScheme.light(primary: Colors.teal),
+            buttonTheme: ButtonThemeData(
+                textTheme: ButtonTextTheme.primary
+            ),
+          ),
+          child: child,
+
+        );
+      },
       context: context,
     );
 
@@ -250,6 +290,65 @@ class _ReminderAlertBuilderState extends State<ReminderAlertBuilder> {
 
     _configureCustomReminder(true);
   }
+
+  void _showDialogue() {
+    showDialog<void>(
+      context: context,
+      // false = user must tap button, true = tap outside dialog
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          title: SvgPicture.asset(
+              'assets/svg/success.svg'
+          ),
+          content: Padding(
+            padding: const EdgeInsets.only(left: 25),
+            child: Text('Successful added.',
+            style: TextStyle(
+              fontSize: 26,
+              ),
+            ),
+          ),
+          actions: <Widget>[
+            ButtonTheme(
+              minWidth: 327,
+              height: 56,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: RaisedButton(
+                  color: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  child: Text('Done',
+                    style: TextStyle(
+                    color: Colors.white
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.of(dialogContext)
+                        .pop(); // Dismiss alert dialog
+                  },
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _toastMessage() {
+    Fluttertoast.showToast(
+        msg: "Cancelled",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
+
 }
 
 

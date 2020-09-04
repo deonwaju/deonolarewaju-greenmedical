@@ -6,6 +6,25 @@ import 'package:deon_greenmed/widgets/password_field.dart';
 import 'package:deon_greenmed/widgets/rounded_text.dart';
 import 'package:flutter/material.dart';
 
+class SPhoneFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Please enter your phone number' : null;
+  }
+}
+
+class SPasswordFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Please enter your password' : null;
+  }
+}
+
+class NameFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Please enter your full name' : null;
+  }
+}
+
+
 class RegistrationPage extends StatefulWidget {
   @override
   _RegistrationPageState createState() => new _RegistrationPageState();
@@ -94,13 +113,7 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                       return new AlphaInputField(
                         onChanged: bloc.nameChanged,
                         onSaved: (val) => _name = val,
-                        validator: (_phone) {
-                          if(_phone.isEmpty){
-                            return 'Please enter your full name';
-                          }
-                          return null;
-                        },
-
+                        validator: NameFieldValidator.validate,
                       );
                     }
                   ),
@@ -114,13 +127,7 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                         errorText: snapshot.error,
                         onChanged: bloc.phoneChanged,
                         onSaved: (val) => _phone = val,
-                        validator: (_phone) {
-                          if(_phone.isEmpty){
-                            return 'Please enter your phone number';
-                          }
-                          return null;
-                        },
-
+                        validator: SPhoneFieldValidator.validate,
                       );
                     }
                   ),
@@ -134,12 +141,7 @@ class _RegistrationPageState  extends State<RegistrationPage> {
                         errorText: snapshot.error,
                         onChanged: bloc.passwordChanged,
                         onSaved: (val) => _password = val,
-                        validator: (_phone) {
-                          if(_phone.isEmpty){
-                            return 'Please enter a password';
-                          }
-                          return null;
-                        },
+                        validator: SPasswordFieldValidator.validate,
                       );
                     }
                   ),
