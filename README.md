@@ -3,11 +3,9 @@
 A new Flutter application.
 An application that creates notifications as reminders for doctors appointments, also allows the patient to choose the type of doctor needed. 
 The application has a log in page that leads the user to the welcome ui. where you can pick your doctor, set your notification reminders to remind the user about 
-appointments with the doctor. 
-It also has a covid statistics check area, emergency phone call, maps with direction to the hospital.
+appointments with the doctor ten minutes and a minute before the appointment.
 
-[NOTE]
-The app is still under completion, I will still like to finish the notifications, covid api call and also write some tests.
+It also has a covid statistics check area, emergency phone call, maps with direction to the hospital.
 
 ## Getting Started
 
